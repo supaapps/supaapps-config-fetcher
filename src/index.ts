@@ -1,2 +1,2 @@
-export * from './useConfig';
-export * from './ConfigManager';
+export { ConfigManager } from './ConfigManager';
+export { useConfig } from './useConfig';
