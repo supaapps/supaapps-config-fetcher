@@ -19,7 +19,7 @@ export class ConfigManager<T> {
         return ConfigManager.instances[key] as ConfigManager<T>;
     }
 
-    public async loadConfig(): Promise<T | null> {
+    public async loadConfig(): Promise<T> {
         if (this.config) return this.config;
         try {
             const host = typeof window !== 'undefined' ? window.location.hostname : 'localhost';
@@ -28,11 +28,7 @@ export class ConfigManager<T> {
             return this.config;
         } catch (error) {
             console.error("Failed to load config:", error);
-            return null;
+            throw new Error('Received invalid config data');
         }
-    }
-
-    public getConfig(): T | null {
-        return this.config;
     }
 }
