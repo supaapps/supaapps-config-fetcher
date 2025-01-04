@@ -6,7 +6,7 @@ export class ConfigManager<T> {
     private appName: string;
     private configHost: string;
 
-    private constructor(appName: string, configHost: string = 'https://config.sacl.io') {
+    private constructor(appName: string, configHost: string = 'https://config.envdomain.com') {
         this.appName = appName;
         this.configHost = configHost;
     }
