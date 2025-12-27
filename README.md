@@ -65,6 +65,30 @@ const customHostManager = ConfigManager.getInstance<MyAppConfig>('example-app@v1
 
 This will load the file from https://example.com/example-app@v1/localhost.json when the app is loaded from localhost
 
+## Local development config
+
+In development, you can opt in to load a local JSON file first. Place `config.local.json` in your app's public folder so it is served at `/config.local.json`.
+
+```typescript
+const configManager = ConfigManager.getInstance<MyAppConfig>(
+  'example-app@v1',
+  undefined,
+  { loadLocalConfig: true }
+);
+```
+
+When `loadLocalConfig` is `true`, the fetcher will try `/config.local.json` first and fall back to the hosted config if the local file is missing.
+
+If you use the React hook, you can pass the same options:
+
+```typescript
+const [config, error] = useConfig<MyAppConfig>(
+  'example-app@v1',
+  undefined,
+  { loadLocalConfig: true }
+);
+```
+
 ## License
 
 Notice:  While this software is open-source under the MIT License, the "Supaapps" name, branding, and logo are proprietary and copyrighted by Supaapps GmbH. Any use, reproduction, or distribution of the "Supaapps" brand assets without explicit permission is strictly prohibited.
